@@ -10,42 +10,44 @@ const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const JsonFileAdapter = require("@bot-whatsapp/database/json");
 const { flow } = require("./content");
 
-const flowExit = addKeyword(flow.exit.trigger).addAnswer(flow.exit.text);
+const C11 = addKeyword(flow.C11.keyword).addAnswer(flow.C11.answers);
+const C10 = addKeyword(flow.C10.keyword)
+  .addAnswer(flow.C10.answers)
+  .addAnswer(flow.options.answers, null, null, [C11, C3]);
+const C8 = addKeyword(flow.C8.keyword)
+  .addAnswer(flow.C8.answers)
+  .addAnswer(flow.options.answers, null, null, [C10, C3]);
+const C7 = addKeyword(flow.C7.keyword)
+  .addAnswer(flow.C7.answers)
+  .addAnswer(flow.options.answers, null, null, [C9, C3]);
+const C6 = addKeyword(flow.C6.keyword)
+  .addAnswer(flow.C6.answers)
+  .addAnswer(flow.options.answers, null, null, [C8, C3]);
+const C5 = addKeyword(flow.C5.keyword)
+  .addAnswer(flow.C5.answers)
+  .addAnswer(flow.options.answers, null, null, [C7, C3]);
+const C3 = addKeyword(flow.C3.keyword).addAnswer(flow.C3.answers);
 
-const flowLevel7 = addKeyword(flow.level7.trigger).addAnswer(flow.level7.text);
+const C2 = addKeyword(flow.C2.keyword)
+  .addAnswer(
+    flow.C2.answers,
+    { capture: true },
+    async (ctx, { flowDynamic, state }) => {
+      let name = ctx.body;
+      await flowDynamic(flow.C4i.answers.replace("[Nombre]", name));
+    }
+  )
 
-const flowLevel6 = addKeyword(flow.level6.trigger).addAnswer(flow.level6.text);
+  .addAnswer(flow.C4.answers)
+  .addAnswer(flow.options.answers, null, null, [C5, C6]);
 
-const flowLevel5 = addKeyword(flow.level5.trigger)
-  .addAnswer(flow.level5.text)
-  .addAnswer(flow.options.text, null, null, [flowLevel6, flowLevel7]);
-
-const flowLevel4 = addKeyword(flow.level4.trigger)
-  .addAnswer(flow.level4.text)
-  .addAnswer(flow.options.text, null, null, [flowLevel5, flowExit]);
-
-const flowLevel3 = addKeyword(flow.level3.trigger)
-  .addAnswer(flow.level3.text)
-  .addAnswer(flow.options.text, null, null, [flowLevel4, flowExit]);
-
-const flowLevel2 = addKeyword(flow.level2.trigger)
-  .addAnswer(flow.level2.text)
-  .addAnswer(flow.options.text, null, null, [flowLevel3, flowExit]);
-
-const flowLevel1 = addKeyword(flow.level1.trigger).addAnswer(
-  flow.level1.text,
-  null,
-  null,
-  [flowLevel2]
-);
-
-const flowPrincipal = addKeyword(flow.main.trigger)
-  .addAnswer(flow.main.text)
-  .addAnswer(flow.options.text, null, null, [flowLevel1, flowExit]);
+const C1 = addKeyword(flow.C1.keyword)
+  .addAnswer(flow.C1.answers)
+  .addAnswer(flow.options.answers, null, null, [C2, C3]);
 
 const main = async () => {
   const adapterDB = new JsonFileAdapter();
-  const adapterFlow = createFlow([flowPrincipal]);
+  const adapterFlow = createFlow([C1]);
   const adapterProvider = createProvider(BaileysProvider);
 
   createBot({
