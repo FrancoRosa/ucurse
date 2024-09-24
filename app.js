@@ -9,25 +9,34 @@ const QRPortalWeb = require("@bot-whatsapp/portal");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const JsonFileAdapter = require("@bot-whatsapp/database/json");
 const { flow } = require("./content");
+
+const forceOptions = async (ctx, { fallBack, flowDynamic }) => {
+  let options = ["si", "no"];
+  if (!options.includes(ctx.body)) {
+    await flowDynamic("Por favor, responde una de las siguientes opciones");
+    return fallBack();
+  }
+};
+
 const C3 = addKeyword(flow.C3.keyword).addAnswer(flow.C3.answers);
 const C9 = addKeyword(flow.C9.keyword).addAnswer(flow.C9.answers);
 
 const C11 = addKeyword(flow.C11.keyword).addAnswer(flow.C11.answers);
 const C10 = addKeyword(flow.C10.keyword)
   .addAnswer(flow.C10.answers)
-  .addAnswer(flow.options.answers, null, null, [C11, C3]);
+  .addAnswer(flow.options.answers, { capture: true }, forceOptions, [C11, C3]);
 const C8 = addKeyword(flow.C8.keyword)
   .addAnswer(flow.C8.answers)
-  .addAnswer(flow.options.answers, null, null, [C10, C3]);
+  .addAnswer(flow.options.answers, { capture: true }, forceOptions, [C10, C3]);
 const C7 = addKeyword(flow.C7.keyword)
   .addAnswer(flow.C7.answers)
-  .addAnswer(flow.options.answers, null, null, [C9, C3]);
+  .addAnswer(flow.options.answers, { capture: true }, forceOptions, [C9, C3]);
 const C6 = addKeyword(flow.C6.keyword)
   .addAnswer(flow.C6.answers)
-  .addAnswer(flow.options.answers, null, null, [C8, C3]);
+  .addAnswer(flow.options.answers, { capture: true }, forceOptions, [C8, C3]);
 const C5 = addKeyword(flow.C5.keyword)
   .addAnswer(flow.C5.answers)
-  .addAnswer(flow.options.answers, null, null, [C7, C3]);
+  .addAnswer(flow.options.answers, { capture: true }, forceOptions, [C7, C3]);
 
 const C2 = addKeyword(flow.C2.keyword)
   .addAnswer(
@@ -40,11 +49,11 @@ const C2 = addKeyword(flow.C2.keyword)
   )
 
   .addAnswer(flow.C4.answers)
-  .addAnswer(flow.options.answers, null, null, [C5, C6]);
+  .addAnswer(flow.options.answers, { capture: true }, forceOptions, [C5, C6]);
 
 const C1 = addKeyword(flow.C1.keyword)
   .addAnswer(flow.C1.answers)
-  .addAnswer(flow.options.answers, null, null, [C2, C3]);
+  .addAnswer(flow.options.answers, { capture: true }, forceOptions, [C2, C3]);
 
 const main = async () => {
   const adapterDB = new JsonFileAdapter();
