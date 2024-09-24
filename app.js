@@ -9,6 +9,8 @@ const QRPortalWeb = require("@bot-whatsapp/portal");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const JsonFileAdapter = require("@bot-whatsapp/database/json");
 const { flow } = require("./content");
+const C3 = addKeyword(flow.C3.keyword).addAnswer(flow.C3.answers);
+const C9 = addKeyword(flow.C9.keyword).addAnswer(flow.C9.answers);
 
 const C11 = addKeyword(flow.C11.keyword).addAnswer(flow.C11.answers);
 const C10 = addKeyword(flow.C10.keyword)
@@ -26,7 +28,6 @@ const C6 = addKeyword(flow.C6.keyword)
 const C5 = addKeyword(flow.C5.keyword)
   .addAnswer(flow.C5.answers)
   .addAnswer(flow.options.answers, null, null, [C7, C3]);
-const C3 = addKeyword(flow.C3.keyword).addAnswer(flow.C3.answers);
 
 const C2 = addKeyword(flow.C2.keyword)
   .addAnswer(
