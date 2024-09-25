@@ -11,8 +11,8 @@ const JsonFileAdapter = require("@bot-whatsapp/database/json");
 const { flow } = require("./content");
 
 const forceOptions = async (ctx, { fallBack, flowDynamic }) => {
-  let options = ["si", "no"];
-  if (!options.includes(ctx.body)) {
+  let options = ["si", "sí", "sì", "no"];
+  if (!options.includes(ctx.body.toLowercase())) {
     await flowDynamic("Por favor, responde una de las siguientes opciones");
     return fallBack();
   }

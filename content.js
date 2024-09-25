@@ -19,7 +19,7 @@ const flow = {
 
   C2: {
     //
-    keyword: ["si"],
+    keyword: ["si", "sí", "sì"],
     answers: [
       "📍 ¡Perfecto! Para empezar, me encantaría saber tu nombre. A partir de ahora, lo usaré para dirigirme a ti durante nuestras conversaciones.",
       "😊 ¿Cómo te llamas?",
@@ -48,7 +48,7 @@ const flow = {
 
   C5: {
     //
-    keyword: ["si"],
+    keyword: ["si", "sí", "sì"],
     answers: [
       "📝 ¡Genial! Tener una idea clara de tus gastos es el primer paso.",
       "¿Te gustaría aprender a hacer un presupuesto sencillo para organizar mejor tu dinero?",
@@ -57,7 +57,7 @@ const flow = {
 
   C7: {
     //
-    keyword: ["si"],
+    keyword: ["si", "sí", "sì"],
     answers: [
       "📊 ¡Perfecto! Un presupuesto es como un mapa que te guía hacia tus metas financieras.",
       "Toma un lápiz y un papel. Te voy a enseñar cómo hacerlo en tres pasos simples:",
@@ -81,7 +81,7 @@ const flow = {
       "Espero que estos consejos te sean útiles, para lograr obtener tus tesoros más deseados.",
       "Nos vemos en un siguiente módulo 😁",
     ],
-    keyword: ["si"],
+    keyword: ["si", "sí", "sì"],
   },
 
   C6: {
@@ -96,7 +96,7 @@ const flow = {
 
   C8: {
     //
-    keyword: ["si"],
+    keyword: ["si", "sí", "sì"],
     answers: [
       "¡Te voy a enseñar tips para hacerlo:",
 
@@ -107,7 +107,7 @@ const flow = {
   },
   C10: {
     //
-    keyword: ["si"],
+    keyword: ["si", "sí", "sì"],
     answers: [
       "¡Es totalmente normal que al principio parezca difícil! aprender  conceptos como ingresos y gastos",
       "¿Te gustaria saber más?",
@@ -119,7 +119,7 @@ const flow = {
 
   C11: {
     //
-    keyword: ["si"],
+    keyword: ["si", "sí", "sì"],
     answers:
       "Felicitaciones por finalizar este primer módulo, ahora sabes más acerca de finanzas y tomaras mejores decisiones. Nos vemos en un siguiente módulo 🤑",
   },
